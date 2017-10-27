@@ -1,62 +1,39 @@
 // Created by: KAMIL WANAT
-// uC: Attiny 24
-// dostêpne porty: PA0-7, PB0-3
+// uC: Atmega 8A
+// dostêpne porty: PC4-6, PB3-7
 // port przycisku: PB0
-// porty wyjsciowe: PA0-7
+
 
 #include <avr/io.h>
 #include<avr/interrupt.h>
 # include <util/delay.h>
+#include "functions.h"
 
-//makra uzytkownika
-#define il_migniec 8
-#define czas_migniecia 40
-#define czas_calosci 18
-
-//makra sprzetowe
-#define LED1 (1<<PA0)
-#define LED2 (1<<PA1)
-#define LED3 (1<<PA2)
-#define LED4 (1<<PA3)
-#define LED5 (1<<PA4)
-#define LED6 (1<<PA5)
-#define music (1<<PA7)
-#define KEY (1<<PB0)
-#define PORTLED PORTA
-#define DDRLED DDRA
-#define PORTLED1 PORTB
-#define DDRLED1 DDRB
-#define PINKEY PINB
-#define PORTKEY PORTB
-uint8_t d1;
-uint8_t d2;
-uint8_t d3;
-uint8_t d4;
-uint8_t d5;
-uint8_t d6;
-uint8_t t_counter0 = 0;
-uint8_t t_counter1 = 0;
+int t_counter0 = 0;
+int t_counter1 = 0;
 uint8_t t_counter2 = 0;
 uint8_t p_counter = 0;
-void timer_init();
-void start_timer();
-void stop_timer();
-int main(void) {
-	timer_init();
-	uint8_t key_lock;
-	DDRLED = 0xFF;
-	DDRLED |= music;
-	PORTKEY |= KEY;
 
-	sei();
+char pwm1 = 255; //zaczynamy od PWM z duty cycle = 0
+char pwm2 = 255;
+char w_gore = 1; //
+uint8_t currentpwm = 1;
+
+
+int main(void) {
+	uint8_t key_lock;
+	init();
 	while (1) {
+
+		_delay_ms(20);
 
 		if (!key_lock && !(PINKEY & KEY)) {
 			PORTLED ^= music;
 			_delay_ms(50);
 			PORTLED ^= music;
-
+			motor_ON();
 			start_timer();
+
 			key_lock = 1;
 			//reakcja na wcisniecie klawisza
 		} else if (key_lock && (PINKEY & KEY))
@@ -66,66 +43,90 @@ int main(void) {
 	return 0;
 }
 
-void timer_init() {
-	TCCR0A |= (1 << WGM01);  //tryb CTC
-	//TCCR0B |= (1<<CS00)|(1<<CS02); //1024 bit prescaler
-	OCR0A = 39; //przerwanie co 40ms
-	TIMSK0 |= (1 << OCIE0A);
-	//sei();
-}
 
-void start_timer() {
-	TCCR0B |= (1 << CS00) | (1 << CS02);
-}
-
-void stop_timer() {
-	TCCR0B &= (!(1 << CS00)) & (!(1 << CS02));
-}
-
-ISR (TIM0_COMPA_vect) {
+ISR (TIMER0_OVF_vect) {
 	//PORTLED ^=LED1;
 
 	t_counter0++;
 	t_counter1++;
-	t_counter2++;
+	//t_counter2++;
 
-
-	switch(t_counter0)
-
-
-	if(t_counter0==)
-
-	if ((t_counter0 > 0) && (t_counter0 < 9)) {
-
+	if (t_counter0 == 1)
 		PORTLED ^= LED1;
-	}
-	if ((t_counter0 > 8) && (t_counter0 < 17)) {
+	else if (t_counter0 == 20)
 		PORTLED ^= LED2;
-		if (t_counter0 >= 16)
-			t_counter0 = 0;
-	}
-
-	if ((t_counter1 > 2) && (t_counter1 < 11)) {
+	else if (t_counter0 == 40)
 		PORTLED ^= LED3;
-	}
-	if ((t_counter1 > 10) && (t_counter1 < 19)) {
+	else if (t_counter0 == 60)
 		PORTLED ^= LED4;
-		if (t_counter1 >= 18)
-			t_counter1 = 2;
-	}
-
-	if ((t_counter2 > 4) && (t_counter2 < 13)) {
+	else if (t_counter0 == 80)
 		PORTLED ^= LED5;
-	}
-	if ((t_counter2 > 12) && (t_counter2 < 21)) {
+	else if (t_counter0 == 100)
 		PORTLED ^= LED6;
-		if (t_counter2 >= 20) {
-			t_counter2 = 4;
-			p_counter++;
-		}
-	}
-	if (p_counter >= czas_calosci) {
+	else if (t_counter0 == 120) {
+		t_counter0 = 0;
+		p_counter++;
+	} else if (p_counter == 60) {
 		stop_timer();
+		ALL_OFF();
 		p_counter = 0;
 	}
+/*
+	if (t_counter1 == 1){
+
+		PORT_DISCO &= ~DISCO_LED2;
+		PORT_DISCO &= ~DISCO_LED3;
+		PORT_DISCO |= DISCO_LED1;
+	}
+	else if (t_counter1 == 200) {
+		PORT_DISCO &= ~DISCO_LED1;
+		PORT_DISCO |= DISCO_LED2;
+	} else if (t_counter1 == 400) {
+		PORT_DISCO &= ~DISCO_LED2;
+		PORT_DISCO |= DISCO_LED3;
+	} else if (t_counter1 == 600) {
+		PORT_DISCO &= ~DISCO_LED1;
+		PORT_DISCO &= ~DISCO_LED2;
+		PORT_DISCO &= ~DISCO_LED3;
+		PORT_DISCO ^= DISCO_LED1;
+		PORT_DISCO ^= DISCO_LED2;
+		PORT_DISCO ^= DISCO_LED3;
+	} else if (t_counter1 == 620) {
+		PORT_DISCO ^= DISCO_LED1;
+		PORT_DISCO ^= DISCO_LED2;
+		PORT_DISCO ^= DISCO_LED3;
+	} else if (t_counter1 == 640) {
+		PORT_DISCO ^= DISCO_LED1;
+		PORT_DISCO ^= DISCO_LED2;
+		PORT_DISCO ^= DISCO_LED3;
+	} else if (t_counter1 == 660) {
+		PORT_DISCO ^= DISCO_LED1;
+		PORT_DISCO ^= DISCO_LED2;
+		PORT_DISCO ^= DISCO_LED3;
+	} else if (t_counter1 == 680) {
+		PORT_DISCO ^= DISCO_LED1;
+		PORT_DISCO ^= DISCO_LED2;
+		PORT_DISCO ^= DISCO_LED3;
+	} else if (t_counter1 == 700) {
+		PORT_DISCO ^= DISCO_LED1;
+		PORT_DISCO ^= DISCO_LED2;
+		PORT_DISCO ^= DISCO_LED3;
+	} else if (t_counter1 == 720) {
+		PORT_DISCO ^= DISCO_LED1;
+		PORT_DISCO ^= DISCO_LED2;
+		PORT_DISCO ^= DISCO_LED3;
+	} else if (t_counter1 == 740) {
+		PORT_DISCO ^= DISCO_LED1;
+		PORT_DISCO ^= DISCO_LED2;
+		PORT_DISCO ^= DISCO_LED3;
+	} else if (t_counter1 == 760) {
+		t_counter1 = 0;
+
+		PORT_DISCO &= ~DISCO_LED1;
+		PORT_DISCO &= ~DISCO_LED2;
+		PORT_DISCO &= ~DISCO_LED3;
+
+	}*/
 }
+
+

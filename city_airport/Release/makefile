@@ -49,7 +49,7 @@ all: city_airport.elf secondary-outputs
 city_airport.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,city_airport.map -mmcu=attiny44a -o "city_airport.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-gcc -Wl,-Map,city_airport.map -mmcu=atmega8a -o "city_airport.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -73,7 +73,7 @@ city_airport.eep: city_airport.elf
 
 sizedummy: city_airport.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=attiny44a city_airport.elf
+	-avr-size --format=avr --mcu=atmega8a city_airport.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
