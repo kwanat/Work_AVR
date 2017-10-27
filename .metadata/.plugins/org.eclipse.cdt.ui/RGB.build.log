@@ -1,0 +1,42 @@
+10:37:26 **** Build of configuration Release for project RGB ****
+make all 
+'Building file: ../main.c'
+'Invoking: AVR Compiler'
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+'Finished building: ../main.c'
+' '
+'Building target: RGB.elf'
+'Invoking: AVR C Linker'
+avr-gcc -Wl,-Map,RGB.map -mmcu=atmega16 -o "RGB.elf"  ./main.o   
+'Finished building target: RGB.elf'
+' '
+'Invoking: AVR Create Extended Listing'
+avr-objdump -h -S RGB.elf  >"RGB.lss"
+'Finished building: RGB.lss'
+' '
+'Create Flash image (ihex format)'
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex RGB.elf  "RGB.hex"
+'Finished building: RGB.hex'
+' '
+'Create eeprom image (ihex format)'
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex RGB.elf  "RGB.eep"
+'Finished building: RGB.eep'
+' '
+'Invoking: Print Size'
+avr-size --format=avr --mcu=atmega16 RGB.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1048 bytes (6.4% Full)
+(.text + .data + .bootloader)
+
+Data:          7 bytes (0.7% Full)
+(.data + .bss + .noinit)
+
+
+'Finished building: sizedummy'
+' '
+
+10:37:27 Build Finished (took 1s.748ms)
+

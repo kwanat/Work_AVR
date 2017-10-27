@@ -1,0 +1,57 @@
+10:37:30 **** Build of configuration Release for project czujnik_temperatury ****
+make all 
+'Building file: ../crc8.c'
+'Invoking: AVR Compiler'
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega8 -DF_CPU=8000000UL -MMD -MP -MF"crc8.d" -MT"crc8.o" -c -o "crc8.o" "../crc8.c"
+'Finished building: ../crc8.c'
+' '
+'Building file: ../ds18x20.c'
+'Invoking: AVR Compiler'
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega8 -DF_CPU=8000000UL -MMD -MP -MF"ds18x20.d" -MT"ds18x20.o" -c -o "ds18x20.o" "../ds18x20.c"
+'Finished building: ../ds18x20.c'
+' '
+'Building file: ../main.c'
+'Invoking: AVR Compiler'
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega8 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+'Finished building: ../main.c'
+' '
+'Building file: ../onewire.c'
+'Invoking: AVR Compiler'
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega8 -DF_CPU=8000000UL -MMD -MP -MF"onewire.d" -MT"onewire.o" -c -o "onewire.o" "../onewire.c"
+'Finished building: ../onewire.c'
+' '
+'Building target: czujnik_temperatury.elf'
+'Invoking: AVR C Linker'
+avr-gcc -Wl,-Map,czujnik_temperatury.map -mmcu=atmega8 -o "czujnik_temperatury.elf"  ./crc8.o ./ds18x20.o ./main.o ./onewire.o   
+'Finished building target: czujnik_temperatury.elf'
+' '
+'Invoking: AVR Create Extended Listing'
+avr-objdump -h -S czujnik_temperatury.elf  >"czujnik_temperatury.lss"
+'Finished building: czujnik_temperatury.lss'
+' '
+'Create Flash image (ihex format)'
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex czujnik_temperatury.elf  "czujnik_temperatury.hex"
+'Finished building: czujnik_temperatury.hex'
+' '
+'Create eeprom image (ihex format)'
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex czujnik_temperatury.elf  "czujnik_temperatury.eep"
+'Finished building: czujnik_temperatury.eep'
+' '
+'Invoking: Print Size'
+avr-size --format=avr --mcu=atmega8 czujnik_temperatury.elf
+AVR Memory Usage
+----------------
+Device: atmega8
+
+Program:    1726 bytes (21.1% Full)
+(.text + .data + .bootloader)
+
+Data:         32 bytes (3.1% Full)
+(.data + .bss + .noinit)
+
+
+'Finished building: sizedummy'
+' '
+
+10:37:33 Build Finished (took 2s.939ms)
+

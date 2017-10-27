@@ -1,0 +1,54 @@
+/*
+ * main.c
+ *
+ *  Created on: 28-03-2015
+ *      Author: Kamil
+ */
+
+#include <avr/io.h>
+# include <util/delay.h>
+
+//makra uzytkownika
+#define il_migniec 8
+#define czas_migniecia 40
+#define czas_calosci 7
+
+//makra sprzetowe
+#define LED1 (1<<PA0)
+#define LED2 (1<<PA1)
+#define KEY (1<<PC1)
+
+int main()
+{
+	uint8_t key_lock;
+	DDRA |=LED1;
+	DDRA|=LED2;
+	PORTC |= KEY;
+	_delay_ms(10);
+	while(1)
+	{
+		if( !key_lock && !(PINC & KEY))
+		{
+			key_lock=1;
+			//reakcja na wcisniecie klawisza
+			for(int j=0;j<czas_calosci;j++)
+			{
+				PORTA|=(LED1);
+				for(int i=0;i<il_migniec;i++)
+				{
+					PORTA ^= (LED1);
+					_delay_ms(czas_migniecia);
+				}
+				PORTA&=(!LED1);
+				PORTA|=(LED2);
+				for(int i=0;i<il_migniec;i++)
+				{
+					PORTA ^= (LED2);
+					_delay_ms(czas_migniecia);
+				}
+				PORTA&=(!LED2);
+			}
+		}else if(key_lock && (PINC &KEY)) key_lock++;
+	}
+	return 0;
+}

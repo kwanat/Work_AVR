@@ -1,0 +1,45 @@
+/*
+ * main.c
+ *
+ *  Created on: 28-03-2015
+ *      Author: Kamil
+ */
+
+#include <avr/io.h>
+# include <util/delay.h>
+
+#define LED1 (1<<PA0)
+#define LED2 (1<<PA1)
+#define KEY (1<<PC0)
+
+int main()
+{
+	uint8_t key_lock;
+	DDRA |=LED1;
+	DDRA|=LED2;
+	PORTC |= KEY;
+	_delay_ms(10);
+	while(1)
+	{
+		if( !key_lock && !(PINC & KEY))
+		{
+			key_lock=1;
+			//reakcja na wcisniecie klawisza
+			PORTA|=(1<<PA0);
+			for(int i=0;i<8;i++)
+			{
+				PORTA ^= (1<<PA0);
+				_delay_ms(40);
+			}
+			PORTA&=(0<<PA0);
+			PORTA|=(1<<PA1);
+			for(int i=0;i<8;i++)
+			{
+				PORTA ^= (1<<PA1);
+				_delay_ms(40);
+			}
+			PORTA&=(0<<PA1);
+		}else if(key_lock && (PINC &KEY)) key_lock++;
+	}
+	return 0;
+}

@@ -1,0 +1,44 @@
+09:20:50 **** Build of configuration Release for project city_airport ****
+make all 
+'Building file: ../main.c'
+'Invoking: AVR Compiler'
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=attiny44a -DF_CPU=1000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:63:12: warning: 'key_lock' may be used uninitialized in this function [-Wmaybe-uninitialized]
+'Finished building: ../main.c'
+' '
+'Building target: city_airport.elf'
+'Invoking: AVR C Linker'
+avr-gcc -Wl,-Map,city_airport.map -mmcu=attiny44a -o "city_airport.elf"  ./main.o   
+'Finished building target: city_airport.elf'
+' '
+'Invoking: AVR Create Extended Listing'
+avr-objdump -h -S city_airport.elf  >"city_airport.lss"
+'Finished building: city_airport.lss'
+' '
+'Create Flash image (ihex format)'
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex city_airport.elf  "city_airport.hex"
+'Finished building: city_airport.hex'
+' '
+'Create eeprom image (ihex format)'
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex city_airport.elf  "city_airport.eep"
+'Finished building: city_airport.eep'
+' '
+'Invoking: Print Size'
+avr-size --format=avr --mcu=attiny44a city_airport.elf
+AVR Memory Usage
+----------------
+Device: attiny44a
+
+Program:     420 bytes (10.3% Full)
+(.text + .data + .bootloader)
+
+Data:         10 bytes (3.9% Full)
+(.data + .bss + .noinit)
+
+
+'Finished building: sizedummy'
+' '
+
+09:20:54 Build Finished (took 3s.43ms)
+

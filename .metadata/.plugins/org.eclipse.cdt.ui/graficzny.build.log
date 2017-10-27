@@ -1,0 +1,21 @@
+10:37:34 **** Build of configuration Release for project graficzny ****
+make all 
+'Building file: ../KS0108-AVR.c'
+'Invoking: AVR Compiler'
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=16000000UL -MMD -MP -MF"KS0108-AVR.d" -MT"KS0108-AVR.o" -c -o "KS0108-AVR.o" "../KS0108-AVR.c"
+'Finished building: ../KS0108-AVR.c'
+' '
+'Building file: ../KS0108.c'
+'Invoking: AVR Compiler'
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=16000000UL -MMD -MP -MF"KS0108.d" -MT"KS0108.o" -c -o "KS0108.o" "../KS0108.c"
+'Finished building: ../KS0108.c'
+' '
+'Building file: ../graph_lcd.c'
+'Invoking: AVR Compiler'
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=16000000UL -MMD -MP -MF"graph_lcd.d" -MT"graph_lcd.o" -c -o "graph_lcd.o" "../graph_lcd.c"
+../graph_lcd.c:9:21: fatal error: windows.h: No such file or directory
+compilation terminated.
+make: *** [graph_lcd.o] B³¹d 1
+
+10:37:36 Build Finished (took 1s.428ms)
+
