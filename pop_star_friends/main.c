@@ -3,7 +3,6 @@
 // dostêpne porty: PC4-6, PB3-7
 // port przycisku: PB0
 
-
 #include <avr/io.h>
 #include<avr/interrupt.h>
 # include <util/delay.h>
@@ -40,7 +39,7 @@ int main(void) {
 			start_timer();
 
 			key_lock = 1;
-			//reakcja na wcisniecie klawisza
+//reakcja na wcisniecie klawisza
 		} else if (key_lock && (PINKEY & KEY))
 			key_lock++;
 
@@ -48,13 +47,12 @@ int main(void) {
 	return 0;
 }
 
-
 ISR (TIMER0_OVF_vect) {
-	//PORTLED ^=LED1;
+//PORTLED ^=LED1;
 
 	t_counter0++;
 	t_counter1++;
-	//t_counter2++;
+//t_counter2++;
 
 	if (t_counter0 == 1)
 		PORTLED ^= LED1;
@@ -78,13 +76,12 @@ ISR (TIMER0_OVF_vect) {
 		p_counter = 0;
 	}
 
-	if (t_counter1 == 1){
+	if (t_counter1 == 1) {
 
 		PORT_DISCO &= ~DISCO_LED2;
 		PORT_DISCO &= ~DISCO_LED3;
 		PORT_DISCO |= DISCO_LED1;
-	}
-	else if (t_counter1 == 200) {
+	} else if (t_counter1 == 200) {
 		PORT_DISCO &= ~DISCO_LED1;
 		PORT_DISCO |= DISCO_LED2;
 	} else if (t_counter1 == 400) {
@@ -135,18 +132,16 @@ ISR (TIMER0_OVF_vect) {
 	}
 }
 
-
-
 void PWM1_led(volatile uint16_t *PWMregister, uint8_t pwmnumber) {
 	if (currentpwm == pwmnumber) {
 		if (w_gore) {
 
-			//rozjaœnianie LED
+//rozjaœnianie LED
 
 			if (pwm1 > 5) {
 				pwm1 -= 5;
 			} else {
-				//osi¹gniêto górn¹ granicê
+//osi¹gniêto górn¹ granicê
 				pwm1 = 0;
 				w_gore = 0;  // zmieñ kierunek
 
@@ -154,13 +149,13 @@ void PWM1_led(volatile uint16_t *PWMregister, uint8_t pwmnumber) {
 
 		} else {
 
-			//œciemnianie LED
+//œciemnianie LED
 
 			if (pwm1 < 250) {
 				pwm1 += 5;
 
 			} else {
-				//osi¹gniêto doln¹ granicê
+//osi¹gniêto doln¹ granicê
 				pwm1 = 255;
 				w_gore = 1;  // zmieñ kierunek
 				currentpwm *= -1;
@@ -168,9 +163,8 @@ void PWM1_led(volatile uint16_t *PWMregister, uint8_t pwmnumber) {
 		}
 
 		*PWMregister = pwm1;
-		//OCR1A = LED_przelicz_jasnosc(pwm1);
-		//OCR1B = LED_przelicz_jasnosc(pwm2);//ustaw PWM LED prawy bez korekcji
+//OCR1A = LED_przelicz_jasnosc(pwm1);
+//OCR1B = LED_przelicz_jasnosc(pwm2);//ustaw PWM LED prawy bez korekcji
 	}
 }
-
 
