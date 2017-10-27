@@ -4,15 +4,6 @@
 // port przycisku: PB0
 
 
-
-
-sdfghjhgfdsdfghjhgfrdesdfghjkjhgtrertyukjhtrew4ertgfgyrd5y6rtgigfyt
-
-asdfghjklkjhgfdsadfghjkl
-asdfghjkkjvhfhh
-hjhhgfdsasdfghjklkjhgfdfghjkjhgfdfghj
-
-
 #include <avr/io.h>
 #include<avr/interrupt.h>
 # include <util/delay.h>
