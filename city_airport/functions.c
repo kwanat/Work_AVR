@@ -16,10 +16,11 @@
 
 void init() {
 	timer_init();
-	DDRLED = 0xFF;
-	MOTOR_DDR |= MOTOR1;
+	DDRLEDA |= LED1A|LED2A|LED3A|LED4A|LED5A;
+	DDRLEDK |= LED1K|LED2K|LED3K|LED4K|LED5K;
+	//MOTOR_DDR |= MOTOR1;
 	//	DDRLED1 |= music;
-	PORTKEY |= KEY;
+	PORTKEY |= KEY; //key pullup
 
 	sei();
 
@@ -37,17 +38,17 @@ void start_timer() {
 }
 
 void stop_timer() {
-	TCCR0 &= (!(1 << CS00)) & (!(1 << CS02));
+	TCCR0 &=  (~(1 << CS01));
 }
 
 
 void motor_ON()
 {
-	MOTOR_PORT|=MOTOR1;
+	//MOTOR_PORT|=MOTOR1;
 }
 void motor_OFF() {
-	MOTOR_PORT&=~MOTOR1;
+	//MOTOR_PORT&=~MOTOR1;
 }
 void ALL_OFF() {
-	motor_OFF();
+	//motor_OFF();
 }
