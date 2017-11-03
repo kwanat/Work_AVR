@@ -13,5 +13,6 @@ void init();
 void timer_init();
 void timer_start();
 void timer_stop();
+void ports_init();
 
 #endif /* FUNCTIONS_H_ */
