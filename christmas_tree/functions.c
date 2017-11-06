@@ -40,7 +40,7 @@ void timer_stop()
 }
 void ports_init()
 {
-
+DDR
 }
 
 
