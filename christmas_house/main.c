@@ -61,9 +61,11 @@ ISR (TIM0_COMPA_vect)
 		PORT_LED&=~LED3;
 		t_counter=0;
 		p_counter++;
+		//clear_all();
 	}
 	if (p_counter>=PROGRAM_TIME)
 	{
+		clear_all();
 		timer_stop();
 		p_counter=0;
 	}

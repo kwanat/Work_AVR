@@ -23,7 +23,7 @@ void timer_init()
 {
 
 TCCR0A |= (1 << WGM01);  //tryb CTC
-	OCR0A = 99;
+	OCR0A = 200;
 	TIMSK0 |= (1 << OCIE0A);
 }
 
