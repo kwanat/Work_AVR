@@ -49,7 +49,7 @@ all: test.elf secondary-outputs
 test.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,test.map -mmcu=atmega328p -o "test.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-gcc -Wl,-Map,test.map -mmcu=atmega8a -o "test.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -73,7 +73,7 @@ test.eep: test.elf
 
 sizedummy: test.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega328p test.elf
+	-avr-size --format=avr --mcu=atmega8a test.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 

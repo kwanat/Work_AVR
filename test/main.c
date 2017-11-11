@@ -11,5 +11,13 @@
 
 
 int main(void) {
+
+
+DDRB = 0xFF;
+while(1){
+PORTB ^= (1<<PB1);
+_delay_ms(200);
+
+}
 return 0;
 }
