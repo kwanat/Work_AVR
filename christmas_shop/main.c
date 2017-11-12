@@ -31,6 +31,7 @@ int main(void)
 			timer_start();
 
 			//key_lock = 1;
+			//
 			//reakcja na wcisniecie klawisza
 		} else if (key_lock && (PINKEY & KEY))
 			key_lock++;
