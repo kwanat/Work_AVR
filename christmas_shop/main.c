@@ -30,7 +30,7 @@ int main(void)
 			lantern_on();
 			timer_start();
 
-			key_lock = 1;
+			//key_lock = 1;
 			//reakcja na wcisniecie klawisza
 		} else if (key_lock && (PINKEY & KEY))
 			key_lock++;
@@ -87,7 +87,7 @@ ISR (TIM0_COMPA_vect)
 	if (p_counter>=PROGRAM_TIME)
 	{
 		clear_all();
-		timer_stop();
+		//timer_stop();
 		p_counter=0;
 	}
 

@@ -8,8 +8,8 @@
 #ifndef PERIPHERAL_CONFIG_H_
 #define PERIPHERAL_CONFIG_H_
 
-#define PROGRAM_TIME 15
-#define SEQUENCE_TIME 20
+#define PROGRAM_TIME 15 //default  value 15
+#define SEQUENCE_TIME 10   //default  value 20
 
 
 

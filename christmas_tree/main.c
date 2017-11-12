@@ -166,7 +166,7 @@ ISR (TIMER0_COMPA_vect)
 
 	else if (t_counter==27)
 		{
-	clear_all();
+	//clear_all();
 	t_counter=7;
 	p_counter++;
 	seq_counter++;
@@ -179,7 +179,7 @@ ISR (TIMER0_COMPA_vect)
 
 	if (p_counter>=PROGRAM_TIME)
 	{
-		timer_stop();
+		//timer_stop();
 		p_counter=0;
 	}
 }
