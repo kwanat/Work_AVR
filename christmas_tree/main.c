@@ -27,7 +27,7 @@ int main(void) {
 		if (!key_lock && !(PINKEY & KEY)) {
 			timer_start();
 
-			key_lock = 1;
+			//key_lock = 1;
 			//reakcja na wcisniecie klawisza
 		} else if (key_lock && (PINKEY & KEY))
 			key_lock++;
@@ -68,7 +68,6 @@ ISR (TIMER0_COMPA_vect)
 			clear_all();
 			seq_counter++;
 			t_counter=0;
-	//		t_counter=0;
 			p_counter++;
 		}
 	}
@@ -166,7 +165,7 @@ ISR (TIMER0_COMPA_vect)
 
 	else if (t_counter==27)
 		{
-	//clear_all();
+	clear_all();
 	t_counter=7;
 	p_counter++;
 	seq_counter++;

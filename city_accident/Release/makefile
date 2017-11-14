@@ -12,9 +12,6 @@ RM := rm -rf
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
-ifneq ($(strip $(C_DEPS)),)
--include $(C_DEPS)
-endif
 ifneq ($(strip $(ASM_DEPS)),)
 -include $(ASM_DEPS)
 endif
@@ -24,62 +21,65 @@ endif
 ifneq ($(strip $(S_UPPER_DEPS)),)
 -include $(S_UPPER_DEPS)
 endif
+ifneq ($(strip $(C_DEPS)),)
+-include $(C_DEPS)
+endif
 endif
 
 -include ../makefile.defs
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-attiny_24.lss \
+city_accident.lss \
 
 FLASH_IMAGE += \
-attiny_24.hex \
+city_accident.hex \
 
 EEPROM_IMAGE += \
-attiny_24.eep \
+city_accident.eep \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: attiny_24.elf secondary-outputs
+all: city_accident.elf secondary-outputs
 
 # Tool invocations
-attiny_24.elf: $(OBJS) $(USER_OBJS)
+city_accident.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,attiny_24.map -mmcu=attiny44 -o "attiny_24.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-gcc -Wl,-Map,city_accident.map -mmcu=attiny44 -o "city_accident.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-attiny_24.lss: attiny_24.elf
+city_accident.lss: city_accident.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S attiny_24.elf  >"attiny_24.lss"
+	-avr-objdump -h -S city_accident.elf  >"city_accident.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-attiny_24.hex: attiny_24.elf
+city_accident.hex: city_accident.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex attiny_24.elf  "attiny_24.hex"
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex city_accident.elf  "city_accident.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-attiny_24.eep: attiny_24.elf
+city_accident.eep: city_accident.elf
 	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex attiny_24.elf  "attiny_24.eep"
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex city_accident.elf  "city_accident.eep"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: attiny_24.elf
+sizedummy: city_accident.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=attiny44 attiny_24.elf
+	-avr-size --format=avr --mcu=attiny44 city_accident.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(ASM_DEPS)$(EEPROM_IMAGE)$(FLASH_IMAGE)$(ELFS)$(LSS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS) attiny_24.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(EEPROM_IMAGE)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) city_accident.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
