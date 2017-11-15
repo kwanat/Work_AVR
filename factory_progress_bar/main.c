@@ -40,9 +40,6 @@ int main(void) {
 				case 4:
 					PORT_LED|=LED4;
 					break;
-				case 4:
-					PORT_LED|=LED4;
-					break;
 				case 5:
 					PORT_LED|=LED5;
 					break;
