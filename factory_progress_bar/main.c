@@ -21,7 +21,7 @@ int main(void) {
 
 	while(1)
 	{
-		if(!(PIN_SIGNAL&SIGNAL1))
+		if(PIN_SIGNAL&SIGNAL1)
 		{
 			PORT_MOTOR|=MOTOR1|MOTOR2;
 			for (int i=1;i<9;i++)
