@@ -27,7 +27,7 @@
 #define MT1 (1<<PD0)
 #define MT2 (1<<PD1)
 #define MT12 (1<<PD2)
-#define MT3 (1<<PD3)
+#define MT3 (1<<PD6)
 #define MT123 (1<<PD4)
 #define MTP (1<<PD5)
 
@@ -51,6 +51,8 @@
 #define K3 (1<<PB3)
 #define K123 (1<<PB4)
 #define KP (1<<PB5)
+
+#define KPROGRAM (1<<PB6)
 
 //PROGRESS BAR
 #define DDR_PROG_BAR DDRA

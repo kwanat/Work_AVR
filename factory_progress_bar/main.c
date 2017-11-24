@@ -53,7 +53,7 @@ int main(void) {
 					PORT_LED|=LED8;
 					break;
 				}
-				_delay_ms(500);
+				_delay_ms(250);
 			}
 			clear_all();
 		}
