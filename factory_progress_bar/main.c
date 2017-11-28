@@ -23,12 +23,12 @@ int main(void) {
 	{
 		if(PIN_SIGNAL&SIGNAL1)
 		{
-			PORT_MOTOR|=MOTOR1|MOTOR2;
 			for (int i=1;i<9;i++)
 			{
 				switch(i)
 				{
 				case 1:
+					PORT_MOTOR|=MOTOR1;
 					PORT_LED|=LED1;
 					break;
 				case 2:
@@ -41,6 +41,8 @@ int main(void) {
 					PORT_LED|=LED4;
 					break;
 				case 5:
+					PORT_MOTOR&=~MOTOR1;
+					PORT_MOTOR|=MOTOR2;
 					PORT_LED|=LED5;
 					break;
 				case 6:
