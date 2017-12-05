@@ -52,7 +52,12 @@
 #define K123 (1<<PB4)
 #define KP (1<<PB5)
 
-#define KPROGRAM (1<<PB6)
+
+#define DDR_PROGRAM DDRC
+#define PORT_PROGRAM PORTC
+#define PIN_PROGRAM PINC
+
+#define KPROGRAM (1<<PB7)
 
 //PROGRESS BAR
 #define DDR_PROG_BAR DDRA

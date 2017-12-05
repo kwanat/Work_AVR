@@ -20,7 +20,7 @@ int main(void) {
 	_delay_ms(100);
 while(1)
 {
-	while(!(PIN_KRANCOWKI&KPROGRAM))
+	if(!(PIN_KRANCOWKI&KPROGRAM))
 	{
 		/*
 		//ELF1
@@ -53,9 +53,9 @@ while(1)
 
 		//PROGRESS BAR1
 		PORT_PROG_BAR|=PROG_BAR1;
-		_delay_ms(3000);
+		_delay_ms(4000);
 		PORT_PROG_BAR&=~PROG_BAR1;
-		_delay_ms(1000);//delay aby mogla sie wykonac animacja
+		//_delay_ms(1000);//delay aby mogla sie wykonac animacja
 /*
 		//ELF12
 		PORT_ME|=ME12;
