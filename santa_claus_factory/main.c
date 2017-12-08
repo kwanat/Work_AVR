@@ -22,12 +22,16 @@ while(1)
 {
 	if(!(PIN_KRANCOWKI&KPROGRAM))
 	{
-		/*
-		//ELF1
-		PORT_ME|=ME1;
+
+		//ZAWOR1
+		PORT_ME|=ME1|ME2;
+		//_delay_ms(1500);
+		//PORT_ME&=~ME1;
 		_delay_ms(2000);
-		PORT_ME&=~ME1;
-*/
+		//PORT_ME|=ME2;
+		//_delay_ms(1500);
+		PORT_ME&=~(ME1|ME2);
+
 
 		//MOTOR1
 		PORT_MT|=MT1;
@@ -37,12 +41,16 @@ while(1)
 		while(!(PIN_KRANCOWKI&K1));
 		PORT_MT&=~MT1;
 
-/*
-		//ELF2
-		PORT_ME|=ME2;
+		//ZAWOR2
+		PORT_PROG_BAR|=PROG_BAR5|PROG_BAR6;
+		//_delay_ms(1500);
+		//PORT_ME&=~ME3;
 		_delay_ms(2000);
-		PORT_ME&=~ME2;
-*/
+		//PORT_ME|=ME4;
+		//_delay_ms(1500);
+		PORT_PROG_BAR&=~(PROG_BAR5|PROG_BAR6);
+
+
 		//MOTOR2
 		PORT_MT|=MT2;
 		do
@@ -53,15 +61,11 @@ while(1)
 
 		//PROGRESS BAR1
 		PORT_PROG_BAR|=PROG_BAR1;
-		_delay_ms(4000);
+		_delay_ms(3000);
 		PORT_PROG_BAR&=~PROG_BAR1;
 		//_delay_ms(1000);//delay aby mogla sie wykonac animacja
-/*
-		//ELF12
-		PORT_ME|=ME12;
-		_delay_ms(2000);
-		PORT_ME&=~ME12;
-*/
+
+
 		//MOTOR12
 		PORT_MT|=MT12;
 		do
@@ -69,12 +73,16 @@ while(1)
 		}
 		while(!(PIN_KRANCOWKI&K12));
 		PORT_MT&=~MT12;
-/*
-		//ELF3
-		PORT_ME|=ME3;
+
+		//ZAWOR3
+		PORT_ME|=ME5|ME6;
+		//_delay_ms(1500);
+		//PORT_ME&=~ME5;
 		_delay_ms(2000);
-		PORT_ME&=~ME3;
-*/
+		//PORT_ME|=ME6;
+		//_delay_ms(1500);
+		PORT_ME&=~(ME5|ME6);
+
 		//MOTOR3
 		PORT_MT|=MT3;
 		do
@@ -88,7 +96,7 @@ while(1)
 		PORT_PROG_BAR|=PROG_BAR2;
 		_delay_ms(3000);
 		PORT_PROG_BAR&=~PROG_BAR2;
-		_delay_ms(1000);
+		//_delay_ms(1000);
 
 		//MOTOR123
 		PORT_MT|=MT123;

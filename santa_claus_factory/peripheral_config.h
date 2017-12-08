@@ -37,8 +37,10 @@
 
 #define ME1 (1<<PC0)
 #define ME2 (1<<PC1)
-#define ME12 (1<<PC2)
-#define ME3 (1<<PC3)
+#define ME3 (1<<PC2)
+#define ME4 (1<<PC5)
+#define ME5 (1<<PC6)
+#define ME6 (1<<PC7)
 
 //KRANCOWKI
 #define DDR_KRANCOWKI DDRB
