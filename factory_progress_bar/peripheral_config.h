@@ -13,22 +13,14 @@
 #ifndef PERIPHERAL_CONFIG_H_
 #define PERIPHERAL_CONFIG_H_
 
-//MOTORS
+//MAKRA DODTYCZ¥CE SILNIKÓW
 #define DDR_MOTOR DDRB
 #define PORT_MOTOR PORTB
 
 #define MOTOR1 (1<<PB1)
 #define MOTOR2 (1<<PB2)
 
-//INPUT SIGNAL
-#define DDR_SIGNAL DDRB
-#define PORT_SIGNAL PORTB
-#define PIN_SIGNAL PINB
-
-#define SIGNAL1 (1<<PB0)
-
-//LEDS
-
+// MAKRA DOTYCZ¥CE DIÓD LED
 #define DDR_LED DDRA
 #define PORT_LED PORTA
 
@@ -41,7 +33,5 @@
 #define LED7 (1<<PA6)
 #define LED8 (1<<PA7)
 
-#define PROGRAM_TIME 10
-#define SEQUENCE_TIME 20
 
 #endif /* PERIPHERAL_CONFIG_H_ */

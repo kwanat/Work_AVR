@@ -16,39 +16,37 @@
 
 
 
-void init() //INICJALIZACJA TIMERÓW, PORTÓW ORAZ PRZERWAÑ
+void init() // INICJALIZACJA TIMERÓW, PORTÓW, PRZERWAÑ
 {
 	timer_init();
 	ports_init();
 	sei();
 }
-void timer_init()
+void timer_init() // INICJALIZACJA TIMERA
 {
 
 
 }
 
-void timer_start()
+void timer_start() // W£¥CZENIE TIMERA
 {
 
 }
 
-void timer_stop()
+void timer_stop() // ZATRZYMANIE TIMERA
 {
 
 }
-void ports_init() //INICJALIZACJA PORTÓW
+void ports_init() // INICJALIZACJA PORTÓW
 {
-	DDR_MOTOR|=MOTOR1|MOTOR2;
 	DDR_LED|=LED1|LED2|LED3|LED4|LED5|LED6|LED7|LED8;
 
 }
 
 
-void clear_all() // WY£ACZENIE WSZYSTKICH DIÓD I SILNIKÓW
+void clear_all()  // WY£¥CZENIE WSZYSTKICH DIÓD
 {
 
-	PORT_MOTOR&=~(MOTOR1|MOTOR2);
 	PORT_LED&=~(LED1|LED2|LED3|LED4|LED5|LED6|LED7|LED8);
 }
 

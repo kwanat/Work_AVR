@@ -16,13 +16,13 @@
 
 
 
-void init()
+void init() // INICJALIZACJA PORTÓW, TIMERA ORAZ ODBLOKOWANIE PRZERWAÑ
 {
 	timer_init();
 	ports_init();
 	sei();
 }
-void timer_init()
+void timer_init()  // INICJALIZACJA TIMERA 0 W TRYBIE CTC
 {
 
 TCCR0A |= (1 << WGM01);  //tryb CTC
@@ -30,16 +30,16 @@ TCCR0A |= (1 << WGM01);  //tryb CTC
 	TIMSK0 |= (1 << OCIE0A);
 }
 
-void timer_start()
+void timer_start() // W£ACZENIE TIMERA
 {
 	TCCR0B |= (1 << CS00)|(1<<CS02); //preskaler 1024bit
 }
 
-void timer_stop()
+void timer_stop() // ZATRZYMANIE TIMERA
 {
 	TCCR0B &= ~((1 << CS00) |(1 << CS01)| (1 << CS02));
 }
-void ports_init()
+void ports_init() // INICJALIZACJA PORTÓW WEJŒCIOWYCH I WYJŒCIOWYCH
 {
 DDRSTAR |=STAR;
 DDRLEVEL1 |=LED1_1|LED1_2;
@@ -53,7 +53,7 @@ PORTKEY|=KEY;
 }
 
 
-void clear_all()
+void clear_all()  // WY£¥CZENIE WSZYSTKICH DIÓD
 {
 	PORTSTAR &= ~STAR;
 	PORTLEVEL1 &=~(LED1_1|LED1_2);

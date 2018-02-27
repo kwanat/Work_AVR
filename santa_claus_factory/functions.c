@@ -16,7 +16,7 @@
 
 
 
-void init()
+void init() // INICJALIZACJA TIMERÓW, PORTÓW, PRZERWAÑ
 {
 	timer_init();
 	ports_init();
@@ -37,7 +37,7 @@ void timer_stop()
 {
 
 }
-void ports_init()
+void ports_init() // INICJALIZACJA PORTÓW WE/WY
 {
 	DDR_MT|=MT1|MT2|MT12|MT3|MT123|MTP;
 	DDR_ME|=ME1|ME2|ME3|ME4|ME5|ME6;

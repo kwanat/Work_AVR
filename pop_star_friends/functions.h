@@ -9,13 +9,7 @@
 #define FUNCTIONS_H_
 
 
-//makra uzytkownika
-#define il_migniec 8
-#define czas_migniecia 40
-#define czas_calosci 18
-
-//makra sprzetowe
-//LED PAS
+//MAKRA DOTYCZ¥CE PASU LED WZD£U¯ WYBIEGU
 #define LED1 (1<<PD0)
 #define LED2 (1<<PD1)
 #define LED3 (1<<PD2)
@@ -23,49 +17,34 @@
 #define LED5 (1<<PD4)
 #define LED6 (1<<PD5)
 
-//LED STATIC
+#define PORTLED PORTD
+#define DDRLED DDRD
+
+// MAKRA DOTYCZ¥CE STATYCZNYCH DIOD LED
 #define STATIC_LED (1<<PD7)
-//DISCO LED
+
+//MAKRA DOTYCZ¥CE MIGAJ¥CYCH DIÓD LED
 #define DISCO_LED1 (1<<PC0)
 #define DISCO_LED2 (1<<PC1)
 #define DISCO_LED3 (1<<PC2)
 
-//MOTORS
-#define MOTOR1 (1<<PC3)
-
-#define music (1<<PD6)
-#define KEY (1<<PB0)
-#define PORTLED PORTD
-#define DDRLED DDRD
 #define PORT_DISCO PORTC
 #define DDR_DISCO DDRC
+
+// MAKRA DOTYCZ¥CE SILNIKÓW
+#define MOTOR1 (1<<PC3)
+
 #define MOTOR_PORT PORTC
 #define MOTOR_DDR DDRC
 
+// MAKRA DOTYCZ¥CE TRIGERA MUZYKI
+#define music (1<<PD6)
+
+// MAKRA DOTYCZ¥CE PRZYCISKU
+#define KEY (1<<PB0)
+
 #define PINKEY PINB
 #define PORTKEY PORTB
-
-uint8_t d1;
-uint8_t d2;
-uint8_t d3;
-uint8_t d4;
-uint8_t d5;
-uint8_t d6;
-
-
-//progi PWM
-#define prog_0 230
-#define prog_1 205
-#define prog_2 180
-#define prog_3 155
-#define prog_4 130
-#define prog_5 105
-#define prog_6 80
-#define prog_7 55
-#define prog_8 30
-#define prog_9 15
-
-
 
 void init();
 void timer_init();
@@ -75,7 +54,6 @@ void PWM_init();
 void PWM_start();
 void PWM_stop();
 
-char LED_przelicz_jasnosc(char wartosc);
 void static_LED_ON();
 void static_LED_OFF();
 void disco_LED_OFF();

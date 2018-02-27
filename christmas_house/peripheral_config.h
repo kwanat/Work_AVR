@@ -8,33 +8,32 @@
 #ifndef PERIPHERAL_CONFIG_H_
 #define PERIPHERAL_CONFIG_H_
 
-#define PROGRAM_TIME 15 //default  value 15
-#define SEQUENCE_TIME 10   //default  value 20
+#define PROGRAM_TIME 15 //LICZBA PRZEJŒC PROGRAMU
 
-
-
+// MAKRA DOTYCZ¥CE LATARNI
 # define DDR_LANTERN DDRA
 # define PORT_LANTERN PORTA
-
-# define DDR_STATIC_LED DDRA
-# define PORT_STATIC_LED PORTA
-
-#define DDR_LED DDRA
-#define PORT_LED PORTA
-
-#define PINKEY PINB
-#define PORTKEY PORTB
-
-
 
 #define LANTERN1 (1<<PA6)
 #define LANTERN2 (1<<PA7)
 
+// MAKRA DOTYCZ¥CE STATYCZNYCH DIÓD
+# define DDR_STATIC_LED DDRA
+# define PORT_STATIC_LED PORTA
+
 #define STATIC_LED1 (1<<PA3)
+
+//MAKRA  DOTYCZ¥CE £AÑCUCHA DIÓD LED
+#define DDR_LED DDRA
+#define PORT_LED PORTA
 
 #define LED1 (1<<PA0)
 #define LED2 (1<<PA1)
 #define LED3 (1<<PA2)
+
+//MAKRA DOTYCZ¥CE PRZYCISKU
+#define PINKEY PINB
+#define PORTKEY PORTB
 
 #define KEY (1<<PB0)
 #define KEY1 (1<<PB1)

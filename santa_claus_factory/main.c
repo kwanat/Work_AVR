@@ -16,112 +16,98 @@
 
 int main(void) {
 
-	init();
+	init();   // INICJALIZACJA
 	_delay_ms(100);
-while(1)
+while(1)  // PÊTLA G£ÓWNA
 {
-	if(!(PIN_KRANCOWKI&KPROGRAM))
+	if(!(PIN_KRANCOWKI&KPROGRAM)) // SPRAWDZENIE CZY PRZYCISK WCIŒNIÊTY
 	{
 
 		//ZAWOR1
-		PORT_ME|=ME1|ME2;
-		//_delay_ms(1500);
-		//PORT_ME&=~ME1;
-		_delay_ms(2000);
-		//PORT_ME|=ME2;
-		//_delay_ms(1500);
-		PORT_ME&=~(ME1|ME2);
+		PORT_ME|=ME1|ME2;		// W£¥CZENIE ZAWORU
+		_delay_ms(2000);		// OCZEKIWANIE 2S
+		PORT_ME&=~(ME1|ME2);	// WY£¥CZENIE ZAWORU
 
 
-		//MOTOR1
-		PORT_MT|=MT1;
+		//TASMA 1
+		PORT_MT|=MT1; 			// W£¥CZENIE TAŒMY
 		do
 		{
 		}
-		while(!(PIN_KRANCOWKI&K1));
-		PORT_MT&=~MT1;
+		while(!(PIN_KRANCOWKI&K1)); // OCZEKIWANIE NA KRAÑCÓWKÊ
+		PORT_MT&=~MT1;			// WY£¥CZENIE TAŒMY
 
 		//ZAWOR2
-		PORT_PROG_BAR|=PROG_BAR5|PROG_BAR6;
-		//_delay_ms(1500);
-		//PORT_ME&=~ME3;
-		_delay_ms(2000);
-		//PORT_ME|=ME4;
-		//_delay_ms(1500);
-		PORT_PROG_BAR&=~(PROG_BAR5|PROG_BAR6);
+		PORT_PROG_BAR|=PROG_BAR5|PROG_BAR6; // W£¥CZENIE ZAWORU
+		_delay_ms(2000); 					// OCZEKIWANIE 2S
+		PORT_PROG_BAR&=~(PROG_BAR5|PROG_BAR6); // WY£¥CZENIE ZAWORU
 
 
-		//MOTOR2
-		PORT_MT|=MT2;
+		//TAŒMA 2
+		PORT_MT|=MT2;			// W£¥CZENIE TAŒMY
 		do
 		{
 		}
-		while(!(PIN_KRANCOWKI&K2));
-		PORT_MT&=~MT2;
+		while(!(PIN_KRANCOWKI&K2)); // oCZEKIWANIE NA KRAÑCÓWKÊ
+		PORT_MT&=~MT2; 			// WY£¥CZENIE TAŒMY
 
 		//PROGRESS BAR1
-		PORT_PROG_BAR|=PROG_BAR1;
-		_delay_ms(3000);
-		PORT_PROG_BAR&=~PROG_BAR1;
-		//_delay_ms(1000);//delay aby mogla sie wykonac animacja
+		PORT_PROG_BAR|=PROG_BAR1; 	// W£¥CZENIE PROGRESS BARA
+		_delay_ms(3000);			// OCZEKIWANIE 3S
+		PORT_PROG_BAR&=~PROG_BAR1;	// WY£¥CZENIE PROGRES BARA
 
 
-		//MOTOR12
-		PORT_MT|=MT12;
+		//TAŒMA 12
+		PORT_MT|=MT12;					// W£ACZENIE TAŒMY
 		do
 		{
 		}
-		while(!(PIN_KRANCOWKI&K12));
-		PORT_MT&=~MT12;
+		while(!(PIN_KRANCOWKI&K12));	// OCZEKIWANIE NA KRAÑCÓWKÊ
+		PORT_MT&=~MT12;					//WY£ACZENIE TAŒMY
 
 		//ZAWOR3
-		PORT_ME|=ME5|ME6;
-		//_delay_ms(1500);
-		//PORT_ME&=~ME5;
-		_delay_ms(2000);
-		//PORT_ME|=ME6;
-		//_delay_ms(1500);
-		PORT_ME&=~(ME5|ME6);
+		PORT_ME|=ME5|ME6; 	// W£¥CZENIE ZAWORU
+		_delay_ms(2000);	// OCZEKIWANIE 2S
+		PORT_ME&=~(ME5|ME6);// WY£ACZENIE ZAWORU
 
-		//MOTOR3
-		PORT_MT|=MT3;
+		// TAŒMA 3
+		PORT_MT|=MT3;		// W£¥CZENIE TAŒMY
 		do
 		{
 		}
-		while(!(PIN_KRANCOWKI&K3));
-		PORT_MT&=~MT3;
-//		_delay_ms(2000);
+		while(!(PIN_KRANCOWKI&K3)); // OCZEKIWANIE NA KRAÑCÓWKÊ
+		PORT_MT&=~MT3;		// WY£¥CZENIE TAŒMY
 
 		//PROGRESS BAR2
-		PORT_PROG_BAR|=PROG_BAR2;
-		_delay_ms(3000);
-		PORT_PROG_BAR&=~PROG_BAR2;
-		//_delay_ms(1000);
+		PORT_PROG_BAR|=PROG_BAR2; 	// W£¥CZENIE PROGRESS BARA
+		_delay_ms(3000);			// OCZEKIWANIE 3S
+		PORT_PROG_BAR&=~PROG_BAR2;	// WY£¥CZENIE PROGRESS BARA
 
-		//MOTOR123
-		PORT_MT|=MT123;
+		// TAŒMA 123
+		PORT_MT|=MT123;			// W£¥CZENIE TAŒMY
 		do
 		{
 		}
-		while(!(PIN_KRANCOWKI&K123));
-		PORT_MT&=~MT123;
-		_delay_ms(2000);
+		while(!(PIN_KRANCOWKI&K123)); // OCZEKIWANIE NA KRAÑCÓWKÊ
+		PORT_MT&=~MT123;		// WY£¥CZENIE TAŒMY
+		_delay_ms(2000);		// OCZEKIWANIE 2S
 
 /*
 		//PROGRESS BAR3
-		PORT_PROG_BAR|=PROG_BAR3;
-		_delay_ms(20);
-		PORT_PROG_BAR&=~PROG_BAR3;
-		_delay_ms(4000);
+		PORT_PROG_BAR|=PROG_BAR3;	// W£¥CZENIE PROGRESS BARA
+		_delay_ms(3000);			// OCZEKIWANIE 3S
+		PORT_PROG_BAR&=~PROG_BAR3; 	// WY£¥CZENIE PROGRESS BARA
+
 */
 
-/*		//MOTORP
-		PORT_MT|=MTP;
+/*		//TAŒMA PREZENT
+		PORT_MT|=MTP; 				// W£¥CZENIE TAŒMY
 		do
 		{
 		}
-		while(!(PIN_KRANCOWKI&KP));
-		PORT_MT&=~MTP;*/
+		while(!(PIN_KRANCOWKI&KP));	// OCZEKIWANIE NA KRAÑCÓWKÊ
+		PORT_MT&=~MTP;				// WY£¥CZENIE TAŒMY
+*/
 
 	}
 }

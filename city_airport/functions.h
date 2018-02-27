@@ -11,7 +11,7 @@
 
 //makra uzytkownika
 #define TIME 100
-#define PROGRAM_TIME 60
+#define PROGRAM_TIME 60  // ILOŒ
 
 //makra sprzetowe
 //LED ANODES
@@ -20,31 +20,22 @@
 #define LED3A (1<<PC2)
 #define LED4A (1<<PC3)
 #define LED5A (1<<PC4)
-//#define LED6A (1<<PD5)
+
+#define PORTLEDA PORTC
+#define DDRLEDA DDRC
 
 //LED CATHODES
-
 #define LED1K (1<<PB1)
 #define LED2K (1<<PB2)
 #define LED3K (1<<PB3)
 #define LED4K (1<<PC4)
 #define LED5K (1<<PC5)
 
-
-//MOTORS
-//#define MOTOR1 (1<<PC3)
-
-//#define music (1<<PD6)
-#define KEY (1<<PD0)
-
-#define PORTLEDA PORTC
-#define DDRLEDA DDRC
-
 #define PORTLEDK PORTB
 #define DDRLEDK DDRB
 
-//#define MOTOR_PORT PORTC
-//#define MOTOR_DDR DDRC
+// MAKRA PRZYCISKU
+#define KEY (1<<PD0)
 
 #define PINKEY PIND
 #define PORTKEY PORTD
@@ -58,9 +49,6 @@ void timer_init();
 void start_timer();
 void stop_timer();
 
-void motor_ON();
-void motor_OFF();
-void ALL_OFF();
 
 
 #endif /* FUNCTIONS_H_ */
